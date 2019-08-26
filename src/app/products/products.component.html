@@ -1,0 +1,14 @@
+<body>
+  <header>
+    Matt's Music
+  </header>
+
+  <main>
+    <div *ngFor="let item of myCart">
+      <p>ID: {{ item.id }}</p>
+      <p>Product: {{ item.product }}</p>
+      <p>Price: {{ item.price }}</p>
+      <p>Quantity: {{ item.quantity }}</p>
+    </div>
+  </main>
+</body>
