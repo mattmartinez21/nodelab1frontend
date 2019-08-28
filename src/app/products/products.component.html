@@ -4,11 +4,27 @@
   </header>
 
   <main>
+    <form #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
+      <input type="text" name="product" ngModel placeholder="Product" />
+      <input type="text" name="price" ngModel placeholder="Price" />
+      <input type="number" name="quantity" ngModel placeholder="Quantity" />
+      <button>Add Item</button>
+    </form>
+
     <div *ngFor="let item of myCart">
       <p>ID: {{ item.id }}</p>
       <p>Product: {{ item.product }}</p>
-      <p>Price: {{ item.price }}</p>
+      <p>Price: $ {{ item.price }}</p>
       <p>Quantity: {{ item.quantity }}</p>
+      <form
+        *ngIf="showForm"
+        #itemForm="ngForm"
+        (ngSubmit)="putQuantity(itemForm, item.id)"
+      >
+        <input type="number" name="quantity" ngModel placeholder="Quantity" />
+      </form>
+      <button (click)="toggleForm()">Edit</button>
+      <button (click)="deleteItem(item.id)">X</button>
     </div>
   </main>
 </body>
